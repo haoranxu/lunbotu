@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .bigBox {
+            width: 560px;
+            height: 380px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+            /*background-color: #f7f7f7;*/
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            position: absolute;
+        }
+
+        .container {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 20%;
+            transition: all 1s;
+            transform-style: preserve-3d;
+        }
+
+        .box li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .box1 {
+            background: url("img/01.jpg");
+            transform: rotatey(60deg) translatez(485px);
+        }
+
+        .box2 {
+            background: url("img/02.jpg");
+            transform: rotatey(120deg) translatez(485px);
+
+        }
+
+        .box3 {
+            background: url("img/03_kis.jpg");
+            transform: rotatey(180deg) translatez(485px);
+
+        }
+
+        .box4 {
+            background: url("img/04.jpg");
+            transform: rotatey(240deg) translatez(485px);
+
+        }
+
+        .box5 {
+            background: url("img/04_kiss.jpg");
+            transform: rotatey(300deg) translatez(485px);
+
+        }
+
+        .box6 {
+            background: url("img/06.jpg");
+            transform: rotatey(360deg) translatez(485px);
+        }
+
+        .left, .right {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: black;
+            text-decoration: none;
+            line-height: 60px;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            top: 190px;
+            margin-top: -30px;
+            opacity: 0;
+        }
+
+        .right {
+            right: 0px;
+        }
+
+        .container:nth-child(2) li {
+            background-position: 0 -76px;
+        }
+
+        .container:nth-child(3) li {
+            background-position: 0px -152px;
+        }
+
+        .container:nth-child(4) li {
+            background-position: 0 -228px;
+        }
+
+        .container:nth-child(5) li {
+            background-position: 0 -304px;
+        }
+
+        .boxTwo {
+            width: 560px;
+            height: 380px;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .containerTwo {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 20%;
+            height: 100%;
+            transition: all 1s;
+            transform-style: preserve-3d;
+            float: left;
+        }
+
+        .boxTwo li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .boxTwo1 {
+            background: url("img/01.jpg");
+            transform: rotatex(60deg) translatez(329px);
+        }
+
+        .boxTwo2 {
+            background: url("img/02.jpg");
+            transform: rotatex(120deg) translatez(329px);
+
+        }
+
+        .boxTwo3 {
+            background: url("img/03_kis.jpg");
+            transform: rotatex(180deg) translatez(329px);
+
+        }
+
+        .boxTwo4 {
+            background: url("img/04.jpg");
+            transform: rotatex(240deg) translatez(329px);
+
+        }
+
+        .boxTwo5 {
+            background: url("img/04_kiss.jpg");
+            transform: rotatex(300deg) translatez(329px);
+
+        }
+
+        .boxTwo6 {
+            background: url("img/06.jpg");
+            transform: rotatex(360deg) translatez(329px);
+        }
+
+        .top, .bottom {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background-color: black;
+            text-decoration: none;
+            line-height: 40px;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            left: 280px;
+            margin-left: -30px;
+            opacity: 0;
+        }
+
+        .top {
+            top: 0px;
+        }
+
+        .bottom {
+            bottom: 0px;
+        }
+
+        .containerTwo:nth-child(1) li {
+
+        }
+
+        .containerTwo:nth-child(2) li {
+            background-position: -112px 0px;
+        }
+
+        .containerTwo:nth-child(3) li {
+            background-position: -224px -0px;
+        }
+
+        .containerTwo:nth-child(4) li {
+            background-position: -336px -0px;
+        }
+
+        .containerTwo:nth-child(5) li {
+            background-position: -448px -0px;
+        }
+
+        .bigBox:hover a {
+            opacity: .3;
+        }
+    </style>
+    <script src="jquery-1.12.3.js"></script>
+    <script> var num = 0;
+    $(function () {
+        $(".left").on("mouseenter", function (){
+          $('.box').fadeIn(0).siblings("div").fadeOut(0);
+
+        });
+        $(".left").on("click", function () {
+            num--;
+            $(".container").css({
+                transform: "rotatey(" + num * 60 + "deg)"
+            });
+            $(".container").each(function (i, e) {//利用each对每个li进行渲染
+                $(this).css({
+                    transitionDelay: i * 0.3 + "s"
+                });
+            })
+            $(".containerTwo").css({
+                transform: "rotatex(" + num * 60 + "deg)"
+            });
+        })
+        $(".right").on("mouseenter", function (){
+            $('.box').fadeIn(0).siblings("div").fadeOut(0);
+
+        });
+        $(".right").on("click", function () {
+            num++;
+            $(".container").css({
+                transform: "rotatey(" + num * 60 + "deg)"
+            });
+            $(".container").each(function (i, e) {//利用each对每个li进行渲染
+                $(this).css({
+                    transitionDelay: i * 0.3 + "s"
+                });
+            })
+            $(".containerTwo").css({
+                transform: "rotatex(" + num * 60 + "deg)"
+            });
+        })
+        $(".bottom").on("mouseenter", function (){
+            $('.boxTwo').fadeIn(0).siblings("div").fadeOut(0);
+
+        });
+        $(".bottom").on("click", function () {
+            num--;
+            $(".containerTwo").css({
+                transform: "rotatex(" + num * 60 + "deg)"
+            });
+            $(".containerTwo").each(function (i, e) {//利用each对每个li进行渲染
+                $(this).css({
+                    transitionDelay: i * 0.3 + "s"
+                });
+            })
+            $(".container").css({
+                transform: "rotatey(" + num * 60 + "deg)"
+            });
+        })
+        $(".top").on("mouseenter", function (){
+            $('.boxTwo').fadeIn(0).siblings("div").fadeOut(0);
+        });
+        $(".top").on("click", function () {
+            num++;
+            $(".containerTwo").css({
+                transform: "rotatex(" + num * 60 + "deg)"
+            });
+            $(".containerTwo").each(function (i, e) {//利用each对每个li进行渲染
+                $(this).css({
+                    transitionDelay: i * 0.3 + "s"
+                });
+            })
+            $(".container").css({
+                transform: "rotatey(" + num * 60 + "deg)"
+            });
+        })
+    })
+    </script>
+</head>
+<body>
+<div class="bigBox">
+    <div class="box">
+        <ul class="container">
+            <li class="box1"></li>
+            <li class="box2"></li>
+            <li class="box3"></li>
+            <li class="box4"></li>
+            <li class="box5"></li>
+            <li class="box6"></li>
+        </ul>
+        <ul class="container">
+            <li class="box1"></li>
+            <li class="box2"></li>
+            <li class="box3"></li>
+            <li class="box4"></li>
+            <li class="box5"></li>
+            <li class="box6"></li>
+        </ul>
+        <ul class="container">
+            <li class="box1"></li>
+            <li class="box2"></li>
+            <li class="box3"></li>
+            <li class="box4"></li>
+            <li class="box5"></li>
+            <li class="box6"></li>
+        </ul>
+        <ul class="container">
+            <li class="box1"></li>
+            <li class="box2"></li>
+            <li class="box3"></li>
+            <li class="box4"></li>
+            <li class="box5"></li>
+            <li class="box6"></li>
+        </ul>
+        <ul class="container">
+            <li class="box1"></li>
+            <li class="box2"></li>
+            <li class="box3"></li>
+            <li class="box4"></li>
+            <li class="box5"></li>
+            <li class="box6"></li>
+        </ul>
+
+    </div>
+    <div class="boxTwo">
+        <ul class="containerTwo">
+            <li class="boxTwo1"></li>
+            <li class="boxTwo2"></li>
+            <li class="boxTwo3"></li>
+            <li class="boxTwo4"></li>
+            <li class="boxTwo5"></li>
+            <li class="boxTwo6"></li>
+        </ul>
+        <ul class="containerTwo">
+            <li class="boxTwo1"></li>
+            <li class="boxTwo2"></li>
+            <li class="boxTwo3"></li>
+            <li class="boxTwo4"></li>
+            <li class="boxTwo5"></li>
+            <li class="boxTwo6"></li>
+        </ul>
+        <ul class="containerTwo">
+            <li class="boxTwo1"></li>
+            <li class="boxTwo2"></li>
+            <li class="boxTwo3"></li>
+            <li class="boxTwo4"></li>
+            <li class="boxTwo5"></li>
+            <li class="boxTwo6"></li>
+        </ul>
+        <ul class="containerTwo">
+            <li class="boxTwo1"></li>
+            <li class="boxTwo2"></li>
+            <li class="boxTwo3"></li>
+            <li class="boxTwo4"></li>
+            <li class="boxTwo5"></li>
+            <li class="boxTwo6"></li>
+        </ul>
+        <ul class="containerTwo">
+            <li class="boxTwo1"></li>
+            <li class="boxTwo2"></li>
+            <li class="boxTwo3"></li>
+            <li class="boxTwo4"></li>
+            <li class="boxTwo5"></li>
+            <li class="boxTwo6"></li>
+        </ul>
+
+    </div>
+    <a href="###" class="left">&lt</a><a href="###" class="right">&gt</a>
+    <a href="###" class="top">︿</a><a href="###" class=" bottom">﹀</a>
+</div>
+</body>
+</html>
